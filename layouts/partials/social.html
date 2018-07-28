@@ -1,5 +1,12 @@
 <div id="social">
-{{ if eq .Site.Params.iconFont "font-awesome" }}
+{{ if eq .Site.Params.iconFont "svg"}}
+
+    {{ range $key, $val := .Site.Social }}
+    {{ $icon := (print "svg/" $key ".svg") }}
+    <a class="symbol" href="{{ $val }}">{{ partial $icon (dict "size" 32) }}</a>
+    {{ end }}
+
+{{ else if eq .Site.Params.iconFont "font-awesome" }}
 	
 	{{ range $key, $val := .Site.Social }}
     <a class="symbol" href="{{ $val }}">
@@ -7,7 +14,7 @@
     </a>
     {{ end }}
 
-{{ else }}
+{{ else if eq .Site.Params.iconFont "mono-social" }}
 	
 	{{ $iconStyle := .Site.Params.socialIconStyle }}
     {{ range $key, $val := .Site.Social }}
