@@ -6,7 +6,7 @@
 {{ .Hugo.Generator }}
 <title>{{ .Title }}{{ if .IsHome }} &middot; {{ .Site.Title }}{{ end }}</title>
 <link rel="shortcut icon" href="{{ "images/favicon.ico" | absURL }}">
-<link rel="stylesheet" href="{{ "css/style.css" | absURL }}">
+<link rel="stylesheet" href="{{ "css/style.v1.css" | absURL }}">
 <link rel="stylesheet" href="{{ "css/highlight.css" | absURL }}">
 {{ range .Site.Params.customCSS }}
 <link rel="stylesheet" href="{{ . | absURL }}">
@@ -21,8 +21,9 @@
 {{ if .Site.Params.enableRSS }}
 <link href="{{ .Site.RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
 {{ end }}
-
 {{ template "_internal/opengraph.html" . }}
 {{ template "_internal/google_news.html" . }}
 {{ template "_internal/schema.html" . }}
 {{ template "_internal/twitter_cards.html" . }}
+{{ partial "google-gtag.html" . }}
+{{ partial "google-ads.html" . }}

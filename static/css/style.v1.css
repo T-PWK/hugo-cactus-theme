@@ -239,8 +239,9 @@ em, i { font-style: italic; }
 }
 
 .post h2.subtitle {
-	font: italic 19px/1.3em Georgia,serif;
 	color: #bbb;
+	font-size: 1.2em;
+	line-height: 1.3em;
 }
 
 .post h2.headline {
