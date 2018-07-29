@@ -8,19 +8,25 @@
 <link rel="shortcut icon" href="{{ "images/favicon.ico" | absURL }}">
 <link rel="stylesheet" href="{{ "css/style.v1.css" | absURL }}">
 <link rel="stylesheet" href="{{ "css/highlight.css" | absURL }}">
+
 {{ range .Site.Params.customCSS }}
 <link rel="stylesheet" href="{{ . | absURL }}">
 {{ end }}
 
 {{ if eq .Site.Params.iconFont "font-awesome" }}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-{{ else }}
+{{ else if eq .Site.Params.iconFont "mono-social" }}
 <link rel="stylesheet" href="{{ "css/monosocialiconsfont.css" | absURL }}">
 {{ end }}
 
-{{ if .Site.Params.enableRSS }}
-<link href="{{ .Site.RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
-{{ end }}
+{{ if .Site.Params.enableRSS }}<link href="{{ .Site.RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />{{ end }}
+{{ if .IsPage }}<link rel="canonical" href="{{ .Permalink }}" />{{ end }}
+
+{{ if not .IsPage }}
+{{ if .Paginator.HasNext }}<link rel="next" href="{{ .Paginator.Next.URL }}">{{ end }}
+{{ if .Paginator.HasPrev }}<link rel="prev" href="{{ .Paginator.Prev.URL }}">{{ end }}
+{{end}}
+
 {{ template "_internal/opengraph.html" . }}
 {{ template "_internal/google_news.html" . }}
 {{ template "_internal/schema.html" . }}
