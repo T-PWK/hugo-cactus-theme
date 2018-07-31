@@ -207,8 +207,6 @@ em, i { font-style: italic; }
 	color: #aaa;
 }
 
-
-
 .home h1 {
 	font-size: 30px;
 	letter-spacing: -1px;
@@ -667,4 +665,22 @@ code {
 	background-color:#EEE; font-size:14px; 
 	padding: 4px; 
 	font-weight: 600;
+}
+
+figure.center {
+	text-align: center
+}
+
+figure.left {
+	text-align: left
+}
+
+figure.right {
+	text-align: right
+}
+
+figure figcaption {
+	font-size: .9em;
+	font-weight: 700;
+	color: #333;
 }
