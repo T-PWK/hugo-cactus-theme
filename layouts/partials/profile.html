@@ -1,9 +1,15 @@
 <div class="profile">
     <section id="wrapper">
         <header id="header">
-            <a href="{{ "about" | absURL }}">
-                <img id="avatar" class="2x" src="{{ "images/avatar.jpeg" | absURL }}"/>
+            {{ $page := .Site.GetPage .Site.Params.avatarLink }}
+            {{ $avatar := .Site.Params.avatar | default "images/avatar.png" | absURL }}
+            {{ if $page }}
+            <a href="{{ $page.Permalink | absURL }}">
+                <img id="avatar" class="2x" src="{{ $avatar }}"/>
             </a>
+            {{ else }}
+                <img id="avatar" class="2x" src="{{ $avatar }}"/>
+            {{ end }}
             <h1>{{ .Site.Params.name }}</h1>
             <h2>{{ .Site.Params.bio | markdownify }}</h2>
         </header>
