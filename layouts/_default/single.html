@@ -9,7 +9,9 @@
         {{ with .Params.tags }}
         {{ if ge (len .) 1 }}
             {{ range . }}
-                <a href="{{ printf "tags/%s" (. | urlize) | absURL }}">{{ . }}</a>
+            {{ with $.Site.GetPage (printf "tags/%s" ( . | urlize) ) }}
+            <a href="{{ .RelPermalink }}">{{ .Name }}</a>
+            {{ end }}
             {{ end }}
         {{ end }}
         {{ end}}
