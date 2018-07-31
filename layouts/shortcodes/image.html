@@ -1,16 +1,9 @@
 <figure {{ if isset .Params "class" }}class="{{ index .Params "class" }}"{{ end }}>
-    {{ if isset .Params "link"}}<a href="{{ index .Params "link"}}">{{ end }}
-        <img src="{{ ($.Page.Resources.GetMatch (.Get "src")).RelPermalink }}" {{ if or (isset .Params "alt") (isset .Params "caption") }}alt="{{ if isset .Params "alt"}}{{ index .Params "alt"}}{{else}}{{ index .Params "caption" }}{{ end }}"{{ end }} />
-    {{ if isset .Params "link"}}</a>{{ end }}
-    {{ if or (or (isset .Params "title") (isset .Params "caption")) (isset .Params "attr")}}
-    <figcaption>{{ if isset .Params "title" }}
-        <h5>{{ index .Params "title" }}</h5>{{ end }}
-        {{ if or (isset .Params "caption") (isset .Params "attr")}}<p>
-        {{ index .Params "caption" }}
-        {{ if isset .Params "attrlink"}}<a href="{{ index .Params "attrlink"}}"> {{ end }}
-            {{ index .Params "attr" }}
-        {{ if isset .Params "attrlink"}}</a> {{ end }}
-        </p> {{ end }}
-    </figcaption>
-    {{ end }}
+  {{ $image := $.Page.Resources.GetMatch (.Get "src") }}
+  {{ if isset .Params "link"}}<a href="{{ index .Params "link"}}">{{ end }}
+  <img src="{{ $image.RelPermalink }}" alt="{{ $image.Title }}" />
+  {{ if isset .Params "link"}}</a>{{ end }}
+  {{ if $image.Title }}
+  <figcaption><h5>{{ $image.Title }}</h5></figcaption>
+  {{ end }}
 </figure>
