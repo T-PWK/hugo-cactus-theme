@@ -3,13 +3,9 @@
         <header id="header">
             {{ $page := .Site.GetPage .Site.Params.avatarLink }}
             {{ $avatar := .Site.Params.avatar | default "images/avatar.png" | absURL }}
-            {{ if $page }}
-            <a href="{{ $page.Permalink | absURL }}">
+            {{ if $page }}<a href="{{ $page.Permalink | absURL }}">{{ end }}
                 <img id="avatar" class="2x" src="{{ $avatar }}"/>
-            </a>
-            {{ else }}
-                <img id="avatar" class="2x" src="{{ $avatar }}"/>
-            {{ end }}
+            {{ if $page }}</a>{{ end }}
             <h1>{{ .Site.Params.name }}</h1>
             <h2>{{ .Site.Params.bio | markdownify }}</h2>
         </header>
