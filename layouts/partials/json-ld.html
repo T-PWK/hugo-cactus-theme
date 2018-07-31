@@ -1,4 +1,4 @@
-{{ if .IsPage }} {{ $ISO8601 := "2006-01-02T15:04:05-07:00" }}
+{{ if .IsPage }} {{ $ISO8601 := "2006-01-02T15:04:05-07:00" }} {{ $images := .Resources.ByType "image" }}
 <script type="application/ld+json">
 {
   "@context": "http://schema.org",
@@ -9,8 +9,8 @@
     "@type": "Person",
     "name": "{{.}}"
   },{{end}}
-  "image": [{{ range .Resources.ByType "image" }}"{{.Permalink}}",{{end}}]
-  "keywords": "{{ range $index, $tag := .Params.tags }}{{ $tag }} {{ end }}",
+  "image": [{{ range $index, $img := $images }}{{ if $index}},{{ end }}"{{ $img.Permalink }}"{{ end }}],
+  "keywords": "{{ range $index, $tag := .Params.tags }}{{ if $index }} {{ end }}{{ $tag }}{{ end }}",
   "wordcount": "{{ .WordCount }}",
   {{ if not .PublishDate.IsZero }}"datePublished": "{{ .PublishDate.Format $ISO8601 | safeHTML }}",{{end}}
   {{ if not .Lastmod.IsZero }}"dateModified": "{{ .Lastmod.Format $ISO8601 | safeHTML }}",{{end}}
