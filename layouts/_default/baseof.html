@@ -1,16 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="{{ .Site.LanguageCode | default "en" }}">
-	<head>
-    {{ partial "head.html" . }}
-    </head>
+{{ block "header" . }}{{ partial "head.html" . }}{{ end }}
 <body>
-    {{ partial "nav.html" . }}
-    <section id="wrapper">
-        {{ block "profile" . }}{{ end }}
-        {{ block "main" . -}}{{- end }}
+  {{ partial "nav.html" . }}
+  <section id="wrapper">
+    {{ block "profile" . }}{{ end }}
+    {{ block "main" . -}}{{- end }}
 
-        {{ partial "footer.html" . }}
-    </section>
-    {{ block "bottom" . }}{{ end }}
+    {{ partial "footer.html" . }}
+  </section>
+  {{ block "bottom" . }}{{ end }}
 </body>
 </html>
