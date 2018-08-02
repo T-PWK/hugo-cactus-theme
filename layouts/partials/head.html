@@ -21,7 +21,10 @@
 {{ end }}
 
 {{ if .Site.Params.enableRSS }}<link href="{{ .Site.RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />{{ end }}
-{{ if .IsPage }}<link rel="canonical" href="{{ .Permalink }}" />{{ end }}
+{{ if .IsPage }}
+<link rel="canonical" href="{{ .Permalink }}" />
+{{ with .OutputFormats.Get "amp" }}<link rel="amphtml" href="{{ .Permalink }}">{{end}}
+{{ end }}
 
 {{ if not .IsPage }}
 {{ if .Paginator.HasNext }}<link rel="next" href="{{ .Paginator.Next.URL }}">{{ end }}

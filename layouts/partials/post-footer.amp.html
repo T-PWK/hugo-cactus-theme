@@ -1,0 +1,9 @@
+<footer id="post-meta" class="clearfix">
+  {{ with .Site.Params.twitter }}<a href="https://twitter.com/{{ . }}">{{ end }}
+  {{ with .Site.Params.avatar }}<amp-img class="avatar" src="{{ . | default "images/avatar.png" | absURL }}" width="{{ $.Site.Params.avatarWidth | default 64 }}" height="{{ $.Site.Params.avatarHeight | default 64 }}" ></amp-img>{{ end }}
+  <div>
+    <span class="dark">{{ .Site.Params.name }}</span>
+    <span>{{ .Site.Params.aboutAuthor }}</span>
+  </div>
+  {{ with .Site.Params.twitter }}</a>{{ end }}
+</footer>

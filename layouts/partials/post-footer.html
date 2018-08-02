@@ -1,0 +1,12 @@
+<footer id="post-meta" class="clearfix">
+  {{ with .Site.Params.twitter }}<a href="https://twitter.com/{{ . }}">{{ end }}
+  {{ with .Site.Params.avatar }}<img class="avatar" src="{{ . | default "images/avatar.png" | absURL }}">{{ end }}
+  <div>
+    <span class="dark">{{ .Site.Params.name }}</span>
+    <span>{{ .Site.Params.aboutAuthor }}</span>
+  </div>
+  {{ with .Site.Params.twitter }}</a>{{ end }}
+  <section id="sharing">
+    {{ partial "share.html" . }}
+  </section>
+</footer>
