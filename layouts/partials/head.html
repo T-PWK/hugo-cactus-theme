@@ -6,7 +6,10 @@
 {{ if .Description }}<meta name="description" content="{{ .Description | markdownify | safeHTML }}">{{else}}{{ with .Site.Params.description }}<meta name="description" content="{{ . | markdownify | safeHTML }}">{{ end }}{{end}}
 {{ .Hugo.Generator }}
 <title>{{ .Title }}{{ if .IsHome }} &middot; {{ .Site.Title }}{{ end }}</title>
-<link rel="shortcut icon" href="{{ "images/favicon.ico" | absURL }}">
+
+
+
+<link rel="shortcut icon" href="{{ .Site.Params.favicon |  default "images/favicon.ico" | absURL }}">
 <link rel="stylesheet" href="{{ "css/style.css" | absURL }}">
 <link rel="stylesheet" href="{{ "css/highlight.css" | absURL }}">
 
