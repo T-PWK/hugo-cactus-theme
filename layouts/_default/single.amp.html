@@ -1,4 +1,4 @@
-{{ define "header" }}{{ partial "head.amp.html" . }}{{ end }}
+{{ define "header" }}{{ partial "amp/head.html" . }}{{ end }}
 {{ define "main" }}
 <article class="post">
     <header>
@@ -23,7 +23,8 @@
     </section>
 </article>
 
-{{ partial "post-footer.amp.html" . }}
-
+{{ partial "amp/post-footer.html" . }}
 {{ partial "latest-posts.html" . }}
 {{ end }}
+
+{{ define "bottom" }}{{ partial "amp/google-analytics.html" . }}{{ end }}
