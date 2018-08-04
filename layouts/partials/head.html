@@ -1,3 +1,4 @@
+<html lang="{{ .Site.LanguageCode | default "en" }}">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -6,8 +7,6 @@
 {{ if .Description }}<meta name="description" content="{{ .Description | markdownify | safeHTML }}">{{else}}{{ with .Site.Params.description }}<meta name="description" content="{{ . | markdownify | safeHTML }}">{{ end }}{{end}}
 {{ .Hugo.Generator }}
 <title>{{ .Title }}{{ if .IsHome }} &middot; {{ .Site.Title }}{{ end }}</title>
-
-
 
 <link rel="shortcut icon" href="{{ .Site.Params.favicon |  default "images/favicon.ico" | absURL }}">
 <link rel="stylesheet" href="{{ "css/style.css" | absURL }}">
