@@ -281,6 +281,9 @@ nav.main-nav a.cta {
   color: #fff;
   margin-left: 12px;
 }
+nav.main-nav a span.arrow {
+  vertical-align: middle;
+}
 
 #wrapper {
   max-width: 800px;

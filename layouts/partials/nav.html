@@ -1,11 +1,11 @@
 <nav class="main-nav">
 	{{ if not .IsHome }}
-		<a href='{{ .Site.BaseURL }}'> <span class="arrow">←</span> {{ .Site.Params.home | default "Home" }}</a>
+		<a class="svg-icon" href='{{ .Site.BaseURL }}'><span class="arrow">{{ partial "svg/home.svg" (dict "size" "1em" "color" "#5badf0") }}</span> {{ with .Site.Params.home }}{{.}}{{ end }}</a>
 	{{ end }}
 
 	{{ range .Site.Menus.main }}
  		<a href='{{ .URL }}'>{{ .Name }}</a>
-  	{{ end }}
+	{{ end }}
 
 	{{ if .Site.Params.enableRSS }}
 		<a class="cta" href="{{ .Site.RSSLink }}">{{ .Site.Params.subscribe | default "Subscribe" }}</a>
