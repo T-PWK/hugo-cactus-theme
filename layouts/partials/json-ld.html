@@ -9,7 +9,8 @@
     "@type": "Person",
     "name": "{{.}}"
   },{{end}}
-  "image": [{{ range $index, $img := $images }}{{ if $index}},{{ end }}"{{ $img.Permalink }}"{{ end }}],
+  "image": [{{ if eq (len $images) 0 }}{"@type":"ImageObject","url":"https://blog.abelotech.com/images/abelo-logo.png","width":600,"height":60}{{ end }}{{ range $index, $img := $images }}{{ if $index}},{{ end }}
+  {"@type": "ImageObject","url":"{{$img.Permalink}}","width":{{$img.Width}},"height":{{$img.Height}}}{{ end }}],
   "keywords": "{{ range $index, $tag := .Params.tags }}{{ if $index }} {{ end }}{{ $tag }}{{ end }}",
   "wordcount": "{{ .WordCount }}",
   {{ if not .PublishDate.IsZero }}"datePublished": "{{ .PublishDate.Format $ISO8601 | safeHTML }}",{{end}}
@@ -19,12 +20,7 @@
   "publisher": {
     "@type": "Organization",
     "name":"Abelo",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://blog.abelotech.com/images/abelo-logo.png",
-      "height": 60,
-      "width": 600
-    }
+    "logo": {"@type":"ImageObject","url":"https://blog.abelotech.com/images/abelo-logo.png","height":60,"width":600}
   }
 }
 </script> {{ end }}
