@@ -255,15 +255,13 @@ h2 {
 
 nav.main-nav {
   padding: 20px 20px 0;
-
-  /*max-width: 600px;*/
-  /*width:100%;*/
   background: #fff;
   background: rgba(255, 255, 255, 0.9);
   margin: 0 auto;
   text-align: right;
-  /*position: fixed;*/
   z-index: 100;
+  display: flex;
+  justify-content: flex-end;
 }
 
 nav.main-nav a {
