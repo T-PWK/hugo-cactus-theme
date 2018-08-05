@@ -7,19 +7,13 @@
 {{ if .Description }}<meta name="description" content="{{ .Description | markdownify | safeHTML }}">{{else}}{{ with .Site.Params.description }}<meta name="description" content="{{ . | markdownify | safeHTML }}">{{ end }}{{end}}
 {{ .Hugo.Generator }}
 <title>{{ .Title }}{{ if .IsHome }} &middot; {{ .Site.Title }}{{ end }}</title>
-
 <link rel="shortcut icon" href="{{ .Site.Params.favicon |  default "images/favicon.ico" | absURL }}">
-<link rel="stylesheet" href="{{ "css/style.css" | absURL }}">
-<link rel="stylesheet" href="{{ "css/highlight.css" | absURL }}">
+
+{{ with resources.Get "scss/style.scss" | resources.ExecuteAsTemplate "styles/style.scss" . | toCSS | minify | fingerprint }}<link rel="stylesheet" href="{{ .Permalink }}" integrity="{{ .Data.Integrity }}">{{ end }}
+{{ with resources.Get "styles/highlight.scss" | toCSS | minify | fingerprint }}<link rel="stylesheet" href="{{ .Permalink }}" integrity="{{ .Data.Integrity }}">{{ end }}
 
 {{ range .Site.Params.customCSS }}
 <link rel="stylesheet" href="{{ . | absURL }}">
-{{ end }}
-
-{{ if eq .Site.Params.iconFont "font-awesome" }}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-{{ else if eq .Site.Params.iconFont "mono-social" }}
-<link rel="stylesheet" href="{{ "css/monosocialiconsfont.css" | absURL }}">
 {{ end }}
 
 {{ if .Site.Params.enableRSS }}<link href="{{ .Site.RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />{{ end }}
