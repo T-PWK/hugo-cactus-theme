@@ -252,7 +252,7 @@ nav.main-nav {
 #wrapper {
   max-width: 800px;
   margin: 0 auto;
-  padding: 3em 2em 5em;
+  padding: 60px 40px 100px 40px;
 
   &.home {
     max-width: 800px;
@@ -547,7 +547,8 @@ Post List
 #post-list li,
 #archive-list li {
   border-top: 1px solid #eee;
-  padding: 1em 0;
+  padding-top: 20px;
+  padding-bottom: 20px;
   list-style-type: none;
   margin-bottom: 0;
 }
@@ -584,7 +585,7 @@ Post List
 
 /* Post Page */
 .post {
-  margin: 0;
+  margin: 80px 0 0 0;
 }
 
 #post-meta {
@@ -725,14 +726,14 @@ h2.month {
   &.archive.readmore {
     a {
       font: 400 16px/1.6 'Helvetica Neue', helvetica, Arial, sans-serif;
-      color: $hover;
+      color: #5694f1;
       &:hover {
         opacity: 0.8;
       }
     }
     h3 {
       font: 400 20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      margin: 1em 0;
+      margin-bottom: 30px;
     }
     .dates {
       font: 300 16px/1.6 'Helvetica Neue', helvetica, Arial, sans-serif;

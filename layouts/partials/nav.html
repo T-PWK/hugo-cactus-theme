@@ -1,6 +1,6 @@
 <nav class="main-nav">
 	{{ if not .IsHome }}
-		<a class="svg-icon" href='{{ .Site.BaseURL }}'><span class="arrow">{{ partial "svg/home.svg" (dict "size" "1em" "color" "#5badf0") }}</span> {{ with .Site.Params.home }}{{.}}{{ end }}</a>
+		<a class="svg-icon" href='{{ .Site.BaseURL }}'>{{ partial "svg/home.svg" (dict "size" "1em" "color" "#5badf0") }} {{ with .Site.Params.home }}{{.}}{{ end }}</a>
 	{{ end }}
 
 	{{ range .Site.Menus.main }}

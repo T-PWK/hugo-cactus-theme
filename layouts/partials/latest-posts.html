@@ -1,9 +1,16 @@
 <ul id="post-list" class="archive readmore">
     <h3>{{ .Site.Params.readMore | default "Read more" }}</h3>
 
+    {{ $related := .Site.RegularPages.Related . }} 
     {{ $kind := where .Site.RegularPages "Section" "!=" "" }}
     {{ $othr := where $kind "URL" "!=" .URL }}
-    {{ range first 10 $othr }}
+
+    {{ $scratch := newScratch }}
+
+    {{ $scratch.Add "pages" $related }}
+    {{ $scratch.Add "pages" $othr }}
+
+    {{ range $scratch.Get "pages" | first 5 }}
         <li>
             <a href="{{ .URL }}">{{ .LinkTitle }}<aside class="dates">{{ .Date.Format "Jan 2 2006" }}</aside></a>
         </li>
