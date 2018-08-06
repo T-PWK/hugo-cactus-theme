@@ -1,1 +1,14 @@
-{{ define "main" }}{{ .Content }}{{ end }}
+{{ define "main" }}
+<article class="post">
+  <header>
+    <h1>{{ .Title }}</h1>
+    <h2 class="headline">
+    {{ .Date.Format "January 2, 2006" }}
+    <br>
+    </h2>
+  </header>
+  <section id="post-body">
+    {{ .Content }}
+  </section>
+</article>
+{{ end }}
