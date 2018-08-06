@@ -155,6 +155,12 @@ pre {
   margin-bottom: 20px;
 }
 
+.post.legal {
+  h2, h3, h4, h5, h6 {
+    margin-bottom: 0;
+  }
+}
+
 /* Base */
 html,
 body {

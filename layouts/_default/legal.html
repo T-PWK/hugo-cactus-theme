@@ -1,0 +1,14 @@
+{{ define "main" }}
+<article class="post legal">
+  <header>
+    <h1>{{ .Title }}</h1>
+    <h2 class="headline">
+      This document was last updated on {{ .Date.Format "January 2, 2006" }}
+      <br>
+    </h2>
+  </header>
+  <section id="post-body">
+    {{ .Content }}
+  </section>
+</article>
+{{ end }}
